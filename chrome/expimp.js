@@ -217,7 +217,7 @@ function importParcedData(datparced)
                         for(let k in usrkeys)
                             userprms[usrkeys[k]] = sing[usrkeys[k]];
                         if(fileversion == 2)
-                            userprms['socnet'] = "contws"   // добавление идентификатора сети к данным предыдущей версии
+                            userprms['socnet'] = "vkcom"   // добавление идентификатора сети к данным предыдущей версии
                     usrarr.push(userprms);
                     usrarr.push({request: "setstatus"});
                     let sendonrankchange = browser.runtime.sendMessage(usrarr);
@@ -231,7 +231,7 @@ function importParcedData(datparced)
                         sing = curar[k];
                         let histarr = new Array();
                         if(fileversion == 2)
-                            sing['socnet'] = "contws"   // добавление идентификатора сети к данным предыдущей версии                        
+                            sing['socnet'] = "vkcom"   // добавление идентификатора сети к данным предыдущей версии                        
                         histarr.push(sing);
                         histarr.push({request: "addhistoryevent"});
 

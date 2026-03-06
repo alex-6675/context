@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "default_locale": "en",
+  "default_locale": "ru",
   "name": "Context RepuTracker-users reputation tracker",
   "short_name": "Context RepuTracker",
   "version": "0.61",
@@ -32,9 +32,9 @@
 
   "content_scripts": [
     {
-      "matches": ["*://*.cont.ws/*", "*://*.vk.com/*", "*://*.livejournal.com/*", "*://*.youtube.com/*", "*://*.habr.com/*", "file:///*"],
+      "matches": ["*://*.vk.com/*"],
       "css": ["ddmenu.css"],
-      "js": ["mutation.js", "userinfodialog.js", "contextlib.js", "initfirst.js", "contws.js", "vkcom.js", "ljcom.js", "youtubecom.js", "habrcom.js", "content.js"]
+      "js": ["mutation.js", "userinfodialog.js", "contextlib.js", "initfirst.js", "vkcom.js", "content.js"]
     }
   ],
   "incognito": "spanning",

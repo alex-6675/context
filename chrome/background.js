@@ -55,7 +55,7 @@ function onInstallInit(details) {
                         let cur = ev.target.result
                         if(cur) {
                             let oldusr = cur.value;
-                            oldusr['socnet'] = "contws"
+                            oldusr['socnet'] = "vkcom"
                             tempholder.push(oldusr)
                             cur.continue()
                         }
@@ -83,7 +83,7 @@ function onInstallInit(details) {
                         let cur = ev.target.result
                         if(cur) {
                             let oldhist = cur.value;
-                            oldhist['socnet'] = "contws"
+                            oldhist['socnet'] = "vkcom"
                             let updput = histore.put(oldhist)
                             updput.onerror = function(event) {
                                 console.log("unable to put history event back to table, ", oldhist);
