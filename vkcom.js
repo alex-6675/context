@@ -388,13 +388,18 @@ function GetVkEventUrl(item, type) {
     if(type == 2) {
         let mv = getParentElementBelobgsToClass(item, 'mv_info')
         if(mv == null) {
-            let postid = item.getAttribute("data-post-id")
-            return "http://vk.com/wall" + postid
-            //let comblock = getParentElementBelobgsToClass(item, 'PostHeaderInfo')
-            //let footblock = getChildElementBelongsToClass(comblock, 'PostHeaderSubtitle')
-            //let linkblock = getChildElementBelongsToClass(footblock, 'PostHeaderSubtitle__link')
-            //if(linkblock != null)
-            //    return linkblock.href;
+            let postid = getVkPostId(item)
+            if (postid) {
+                return "http://vk.com/wall" + postid
+            }
+            // fallback: попробуем найти ссылку на пост через родительские элементы
+            let comblock = getParentElementBelobgsToClass(item, 'PostHeaderInfo')
+            let footblock = getChildElementBelongsToClass(comblock, 'PostHeaderSubtitle')
+            let linkblock = getChildElementBelongsToClass(footblock, 'PostHeaderSubtitle__link')
+            if(linkblock != null)
+                return linkblock.href;
+            // если ничего не нашли, возвращаем null
+            return null;
         }
         else {
             let res = window.location.href
@@ -427,6 +432,17 @@ function IsNestedVk(root, candidate) {
         return true;
     
     return false;
+}
+
+// Вспомогательная функция для поиска data-post-id в родительских элементах
+function getVkPostId(item) {
+    let el = item;
+    while (el) {
+        let postId = el.getAttribute("data-post-id");
+        if (postId) return postId;
+        el = el.parentElement;
+    }
+    return null;
 }
 
 function getTimeFromElement(elem) {
